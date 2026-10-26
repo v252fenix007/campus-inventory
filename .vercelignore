@@ -1,0 +1,10 @@
+node_modules
+.git
+.DS_Store
+*.zip
+*.log
+docs
+setup.bat
+setup.sh
+package-project.sh
+TRANSFER_GUIDE.md

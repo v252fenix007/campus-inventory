@@ -1,0 +1,26 @@
+{
+  "name": "campusflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CampusFlow - Smart Student OD & Leave Management System with Attendance Integration",
+  "scripts": {
+    "setup": "npm install && npm run install:all && npm run seed",
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "seed": "npm --prefix server run seed",
+    "verify": "npm --prefix server run verify",
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "test": "npm --prefix server run test",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "package": "bash package-project.sh"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "devDependencies": {
+    "@vercel/node": "^5.1.13",
+    "concurrently": "^9.1.2"
+  }
+}
