@@ -20,6 +20,11 @@ beforeAll(async () => {
   await connectDB();
   app = createApp();
 
+  // Clean up any existing test records for idempotency
+  await ODRequest.deleteMany({
+    eventName: { $in: ['ACM ICPC Regional Qualifiers', 'Another Event On Same Days'] },
+  });
+
   // Login Student
   const sRes = await request(app)
     .post('/api/v1/auth/login')
@@ -50,6 +55,9 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await ODRequest.deleteMany({
+    eventName: { $in: ['ACM ICPC Regional Qualifiers', 'Another Event On Same Days'] },
+  });
   await mongoose.disconnect();
 });
 
